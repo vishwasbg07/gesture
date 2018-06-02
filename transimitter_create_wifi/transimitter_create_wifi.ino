@@ -23,51 +23,8 @@ void handleRoot()
     {
       server.send(200, "text/html", code2);
     }
-    else if ( y == 99)
-    {
-      server.send(200, "text/html", code3);
-    }
-    else if ( y == 100)
-    {
-      server.send(200, "text/html", code4);
+    
 
-    }
-    else if ( y == 101)
-    {
-      server.send(200, "text/html", code5);
-    }
-
-    else if ( y == 102)
-    {
-      server.send(200, "text/html", code6);
-
-    }
-    else if ( y == 103)
-    {
-
-      server.send(200, "text/html", code7);
-
-    }
-    else if ( y == 104)
-    {
-
-      server.send(200, "text/html", code8);
-
-    }
-    else if ( y == 105)
-    {
-
-      server.send(200, "text/html", code9);
-
-    }
-    else if ( y == 106)
-    {
-
-      server.send(200, "text/html", code10);
-
-    }
-
-  }
 }
 
 void setup()
