@@ -46,32 +46,6 @@ void loop()
         Player.play(3);
         break;
 
-      case 'c':
-        Player.play(4);
-        break;
-
-      case 'd':
-        Player.play(5);
-        break;
-
-      case 'z':
-        Player.play(6);
-        break;
-
-      case 'f':
-        Player.play(7);
-        break;
-
-      case 'g':
-        Player.play(8);
-        break;
-
-      case 'h':
-        Player.play(9);
-        break;
-
-      case 'i':
-        Player.play(1);
         break;
 
       case 'e':
