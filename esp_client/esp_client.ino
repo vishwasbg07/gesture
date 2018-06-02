@@ -1,7 +1,6 @@
 //receiver program for esp01 
 #include <ESP8266WiFi.h>
 #include <SoftwareSerial.h>
-SoftwareSerial ESP_ARD(SW_SERIAL_UNUSED_PIN, 2); // RX, TX  |||| RX = ESP8266 = GPIO_2
 const char* ssid     = "MASTER DEVICE";
 const char* password = "vishwas123";
 const char* host = "192.168.4.1";
@@ -50,60 +49,32 @@ void loop() {
                "Host: " +  + "\r\n" + 
                "Connection: close\r\n\r\n");
   unsigned long timeout = millis();
-  // Read all the lines of the reply from server and print them to Serial
-    while (client.available() == 0) {
-    if (millis() - timeout > 2000) {
-      Serial.println(">>> Clie Timeout !");
-      client.stop();
-      return;
     }
   }
   while (client.available()) {
 
-    String line = client.readStringUntil('\r');
+    String line = client.readStringUntil('\n'); 
 
-    Serial.print(line); 
-
-    if (line.endsWith("a"))
+    if (line=='a'))
     {
       ESP_ARD.write(97);
     }
-    else if (line.endsWith("b"))
+    else if (line=='b'))
     {
       ESP_ARD.write(98);
     }
-    else if (line.endsWith("c"))
+    else if (line=='c')
     {
       ESP_ARD.write(99);
     }
-    else if (line.endsWith("d"))
+    else if (line=='d')
     {
       ESP_ARD.write(100);
     }
-    else if (line.endsWith("z"))
+    else if (line=='e')
     {
       ESP_ARD.write(122);
     }
-    else if (line.endsWith("f"))
-    {
-      ESP_ARD.write(102);
-    }
-    else if (line.endsWith("g"))
-    {
-      ESP_ARD.write(103);
-
-    }
-    else if (line.endsWith("h"))
-    {
-      ESP_ARD.write(104);
-    }
-    else if (line.endsWith("i"))
-    {
-      ESP_ARD.write(105);
-    }
-    else if (line.endsWith("j"))
-    {
-      ESP_ARD.write(106);
-    }
+  
   }
  }
