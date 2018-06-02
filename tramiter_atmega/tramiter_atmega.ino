@@ -4,12 +4,7 @@
 #include<EEPROM.h>
 
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
-SoftwareSerial mySerial(16, 17);
-//17 pin connected to esp gpio_02 of esp02
-void flexsensor(void);
-char password[4];
-char pass[4], pass1[4];
-int i = 0;
+
 char customKey = 0;
 const byte ROWS = 4; //four rows
 const byte COLS = 4; //four columns
@@ -19,19 +14,11 @@ char hexaKeys[ROWS][COLS] = {
   {'7', '8', '9', 'C'},
   {'*', '0', '#', 'D'}
 };
-byte rowPins[ROWS] = {23, 25, 27, 29}; //connect to the row pinouts of the keypad
-byte colPins[COLS] = {31, 33, 35, 37}; //connect to the column pinouts of the keypad
-Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
-int F1 = A12;
-int F2 = A10;
-int F3 = A8;
-//const int xpin = A1;
-const int ypin = A14;
-//const int zpin = A3;
+
 void setup()
 {
   Serial.begin(9600);
-  mySerial.begin(115200);
+
   pinMode(30, OUTPUT);
   pinMode(31, OUTPUT);
   pinMode(F1, INPUT);
@@ -181,55 +168,7 @@ void sensor()
     {
       Serial.print("flat\n");
 
-      if ((90 <= f1 && f1 <= 105) && (115 <= f2 && f2 <= 130) && (105 <= f3 && f3 <= 115))
-      {
-
-        Serial.print("alert\n");
-        lcd.print("alert");
-        mySerial.write("e");
-
-
-      }
-
-      else if ((90 <= f1 && f1 <= 105) && (130 <= f2 && f2 <= 145) && (115 <= f3 && f3 <= 130))
-      {
-
-        Serial.print("shoot target\n");
-        lcd.print("shoot target");
-        mySerial.write("f");
-
-      }
-
-      else if ((105 <= f1 && f1 <= 120) && (130 <= f2 && f2 <= 145) && (115 <= f3 && f3 <= 130))
-      {
-
-        Serial.print("at risk\n");
-        lcd.print("at risk");
-        mySerial.write("g");
-
-
-      }
-      else
-      {
-
-        Serial.print("reading");
-        lcd.print("reading flat");
-        mySerial.write("j");
-
-      }
-    }
-    else if (390 < y1 && y1 < 420)
-    {
-      Serial.print("down\n");
-
-      if ((90 <= f1 && f1 <= 105) && (115 <= f2 && f2 <= 130) && (105 <= f3 && f3 <= 115))
-      {
-
-        Serial.print("knee down\n");
-        lcd.print("knee down");
-        mySerial.write("h");
-
-      }
+     
 
 
       else if ((105 <= f1 && f1 <= 120) && (130 <= f2 && f2 <= 145) && (115 <= f3 && f3 <= 130))
