@@ -6,16 +6,8 @@ const char *ssid = "MASTER DEVICE";
 const char *password = "vishwas123";
 const char *code1 = "Attack a";
 const char *code2 = "Follow me b";
-const char *code3 = "Sucess c";
-const char *code4 = "Stop d";
-const char *code5 = "Alert z";
-const char *code6 = "Shoot Target f";
-const char *code7 = "At risk g";
-const char *code8 = "Knee down h";
-const char *code9 = "Cover up i";
-const char *code10 = "Reading j";
 
-SoftwareSerial ESP_ARD(2, SW_SERIAL_UNUSED_PIN); // RX, TX  |||| RX = ESP8266 = GPIO_2
+
 ESP8266WebServer server(80);
 void handleRoot()
 {
@@ -82,14 +74,13 @@ void setup()
 {
   delay(1000);
   Serial.begin(115200);
-  ESP_ARD.begin(115200);
   Serial.println();
   Serial.print("Configuring access point1q...");
   WiFi.softAP(ssid, password);
   IPAddress myIP = WiFi.softAPIP();
   Serial.print("AP IP address: ");
   Serial.println(myIP);
-  server.on("/", handleRoot);
+  server.on("/get", handleRoot);
   server.begin();
   Serial.println("HTTP server started");
 }
@@ -97,7 +88,6 @@ void loop()
 {
 
   handleRoot();
-  server.handleClient();
 
 }
 
